@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>React App</title>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<style>
+body{text-align:center;font-family:Arial}
+button{margin:5px;padding:8px}
+h1{color:blue}
+</style>
+
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function App(){
+  const [p,setP]=React.useState("home");
+  return(
+    <div>
+      <button onClick={()=>setP("home")}>Home</button>
+      <button onClick={()=>setP("about")}>About</button>
+
+      {p==="home" ? (
+        <div>
+          <h1>Home Page</h1>
+          <p>Welcome to the Home Page</p>
+        </div>
+      ) : (
+        <div>
+          <h1>About Page</h1>
+          <p>Welcome to the About Page</p>
+        </div>
+      )}
+
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+
+</script>
+</body>
+</html>
