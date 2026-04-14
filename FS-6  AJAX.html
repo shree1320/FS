@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX XML Example</title>
+<script>
+    function loadXML() {
+     var xhttp = new XMLHttpRequest();
+     xhttp.onreadystatechange = function () {
+     if (this.readyState == 4 && this.status == 200) {
+
+        var xml = this.responseXML;
+        var users = xml.getElementsByTagName("user");
+        var output = "<h3>User List</h3>";
+
+      for (var i = 0; i < users.length; i++) {    
+        var name = users[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+        var email = users[i].getElementsByTagName("email")[0].childNodes[0].nodeValue;
+        output += "<p><b>Name:</b> " + name +" | <b>Email:</b> " + email + "</p>";
+                                             }
+                                             
+            document.getElementById("result").innerHTML = output;
+                }
+            };
+
+            // Load XML file
+            xhttp.open("GET", "data.xml", true);
+            xhttp.send();
+        }
+</script>
+</head>
+<body>
+    <h2>AJAX XML Data Fetch</h2>
+    <button onclick="loadXML()">Load XML Data</button>
+    <div id="result"></div>
+</body>
+</html>
