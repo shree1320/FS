@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Simple Counter</h2>
+<p id="t">Count: 0</p>
+
+<button onclick="f()">Click to Increase Count</button>
+
+<script>
+let c = 0;
+function f(){
+ c++;
+ document.getElementById("t").innerHTML = "Count: " + c;
+}
+</script>
+
+</body>
+</html>
