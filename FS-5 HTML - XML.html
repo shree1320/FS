@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+       <title>Save Form Data to XML</title>
+</head>
+<body>
+    <h2>Save Form Data to XML</h2>
+<form id="f">
+  Name: <input id="n" required><br><br>
+  Email: <input id="e" type="email" required><br><br>
+  <button>Save</button>
+</form>
+
+<p id="msg"></p>
+
+<script>
+f.onsubmit = (event) => {
+  event.preventDefault();
+
+  let xml = `<?xml version="1.0"?>
+<user>
+  <name>${n.value}</name>
+  <email>${e.value}</email>
+</user>`;
+
+  let a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([xml], {type:"application/xml"}));
+  a.download = "data.xml";
+  a.click();
+
+  document.getElementById("msg").innerText =
+    "XML file saved successfully!";
+};
+</script>
+
+</body>
+</html>
